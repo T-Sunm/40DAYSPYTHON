@@ -23,9 +23,11 @@ def computeDifference ( bg_img , input_img ) :
     [420]]  # Tổng giá trị của Pixel 2: 130 + 140 + 150
 
     '''
+    # khi sum lại thì nó lớn hơn 255(vì 0 <p< 255) vì vậy chia cho 3 để giảm nó lại
+    #chia cho 1 số float để nó tính chính xác hơn xong chuyển về lại uint8
     difference_single_channel = np.sum( difference_three_channel , axis =2) / 3.0
 
-    # Chuyển đổi trở lại sang uint8 để phù hợp với xử lý ảnh.
+    # Chuyển đổi trở lại sang uint8 để thành interger
     difference_single_channel = difference_single_channel.astype('uint8')
 
     return difference_single_channel
